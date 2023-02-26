@@ -25,6 +25,7 @@ function renderLevelSelection () {
     const chooseLinkEasy = document.createElement('a');
     chooseLinkEasy.classList.add('choose__link', 'easy');
     chooseLinkEasy.setAttribute('href', '#');
+    chooseLinkEasy.setAttribute('value', 'easy');
     chooseLinkEasy.textContent = '1';
 
     const chooseLinkWrapAverage = document.createElement('div');
@@ -33,6 +34,7 @@ function renderLevelSelection () {
     const chooseLinkAverage = document.createElement('a');
     chooseLinkAverage.classList.add('choose__link', 'average');
     chooseLinkAverage.setAttribute('href', '#');
+    chooseLinkAverage.setAttribute('value', 'average');
     chooseLinkAverage.textContent = '2';
 
     const chooseLinkWrapHard = document.createElement('div');
@@ -41,6 +43,7 @@ function renderLevelSelection () {
     const chooseLinkHard = document.createElement('a');
     chooseLinkHard.classList.add('choose__link', 'hard');
     chooseLinkHard.setAttribute('href', '#');
+    chooseLinkHard.setAttribute('value', 'hard');
     chooseLinkHard.textContent = '3';
 
 
@@ -66,3 +69,29 @@ function renderLevelSelection () {
 };
 
 renderLevelSelection();
+
+// Переход на другие страницы
+
+const btn = document.querySelector(".choose__btn");
+const link = document.querySelectorAll('.choose__link');
+
+link.forEach(element => {
+    element.addEventListener('click', () => {
+
+        btn.addEventListener('click', (event) => {
+            const getValue = element.getAttribute('value');
+            event.preventDefault();
+        
+            if (getValue === "easy") {
+                easy();
+            }else if(getValue === "average") {
+                average();
+            } else if(getValue === "hard") {
+                hard();
+            } else {
+                alert('Выберите уровень сложности');
+            }
+        
+        });
+    });
+});
