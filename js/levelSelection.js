@@ -73,20 +73,24 @@ const btn = document.querySelector('.choose__btn');
 const link = document.querySelectorAll('.choose__link');
 
 link.forEach((element) => {
-  element.addEventListener('click', () => {
-    btn.addEventListener('click', (event) => {
-      const getValue = element.getAttribute('value');
-      event.preventDefault();
+  element.addEventListener(
+    'click',
+    () => {
+      btn.addEventListener('click', (event) => {
+        const getValue = element.getAttribute('value');
+        event.preventDefault();
 
-      if (getValue === 'easy') {
-        renderCard(3);
-      } else if (getValue === 'average') {
-        renderCard(15);
-      } else if (getValue === 'hard') {
-        renderCard(36);
-      } else {
-        alert('Выберите уровень сложности');
-      }
-    });
-  });
+        if (getValue === 'easy') {
+          renderCard(3);
+        } else if (getValue === 'average') {
+          renderCard(6);
+        } else if (getValue === 'hard') {
+          renderCard(9);
+        } else {
+          alert('Выберите уровень сложности');
+        }
+      });
+    },
+    { once: true }
+  );
 });

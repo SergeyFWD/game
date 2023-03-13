@@ -59,6 +59,22 @@ function renderCard(num) {
     btn.classList.add('btn__card');
     btn.style.backgroundImage = `url("../img/${item}")`;
 
+    setTimeout(() => {
+      btn.classList.add('game__card-back');
+      btn.style.backgroundImage = 'url("../img/backCard.png"';
+    }, 2000);
+
+    btn.addEventListener('click', (e) => {
+      btn.style.backgroundImage = `url("../img/${item}")`;
+      // btn.setAttribute("value", `${item}`);
+      // const getValue = btn.getAttribute("value");
+      // if (getValue === getValue) {
+      //   console.log("кайф");
+      // } else {
+      //   console.log(".!.");
+      // }
+    });
+
     gameContainer.appendChild(btn);
   });
 }
