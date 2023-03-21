@@ -27,6 +27,10 @@ function timers() {
   timerBtn.classList.add('timers__btn');
   timerBtn.textContent = 'Начать заново';
 
+  timerBtn.addEventListener('click', () => {
+    window.location.reload();
+  });
+
   // Добавление общего контейнера для таймера
   APP.appendChild(timeWrap);
 

@@ -38,6 +38,8 @@ const arrCard = [
 ];
 
 const cards = [];
+let firstCard;
+let secondCard;
 
 function renderCard(num) {
   APP.innerHTML = '';
@@ -66,13 +68,29 @@ function renderCard(num) {
 
     btn.addEventListener('click', (e) => {
       btn.style.backgroundImage = `url("../img/${item}")`;
-      // btn.setAttribute("value", `${item}`);
-      // const getValue = btn.getAttribute("value");
-      // if (getValue === getValue) {
-      //   console.log("кайф");
-      // } else {
-      //   console.log(".!.");
-      // }
+      btn.classList.remove('game__card-back');
+
+      btn.setAttribute('value', `${item}`);
+      const getValue = btn.getAttribute('value');
+      if (firstCard === undefined) {
+        firstCard = getValue;
+        btn.classList.add('success');
+      } else if (secondCard === undefined) {
+        secondCard = getValue;
+      }
+
+      if (secondCard !== undefined && firstCard !== undefined) {
+        if (secondCard === firstCard && firstCard === secondCard) {
+          btn.classList.add('success');
+          alert('Выиграл');
+
+          firstCard = undefined;
+          secondCard = undefined;
+        } else if (secondCard !== firstCard) {
+          alert('Проиграл');
+          gameContainer.innerHTML = '';
+        }
+      }
     });
 
     gameContainer.appendChild(btn);
