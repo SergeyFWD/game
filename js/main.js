@@ -1,5 +1,5 @@
-// import { add } from './levelSelection';
-// import '../css/style.css';
+import '../css/style.css';
+
 const APP = document.querySelector('.app');
 
 const CONTAINER = () => {
@@ -10,3 +10,7 @@ const CONTAINER = () => {
   // Добавление общего контейнера для игры
   APP.appendChild(gameContainer);
 };
+
+import '../js/timers.js';
+import '../js/cards.js';
+import '../js/levelSelection.js';
