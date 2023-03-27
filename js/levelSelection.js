@@ -1,4 +1,6 @@
-function renderLevelSelection() {
+import { renderCard } from '../js/cards';
+export function renderLevelSelection(app) {
+    
   // Создание общей обертки
   const chooseWrap = document.createElement('div');
   chooseWrap.classList.add('choose-wrap');
@@ -45,7 +47,7 @@ function renderLevelSelection() {
   chooseLinkHard.setAttribute('value', 'hard');
   chooseLinkHard.textContent = '3';
 
-  APP.appendChild(chooseWrap);
+  app.appendChild(chooseWrap);
   chooseWrap.appendChild(h2);
   chooseWrap.appendChild(chooseLinkBg);
 
@@ -63,34 +65,27 @@ function renderLevelSelection() {
 
   // Добавление кнопки
   chooseWrap.appendChild(btnChoose);
+
+  [chooseLinkEasy, chooseLinkAverage, chooseLinkHard].forEach((element) => {
+    element.addEventListener(
+      'click',
+      () => {
+        btnChoose.addEventListener('click', (event) => {
+          const getValue = element.getAttribute('value');
+          event.preventDefault();
+
+          if (getValue === 'easy') {
+            renderCard(3);
+          } else if (getValue === 'average') {
+            renderCard(6);
+          } else if (getValue === 'hard') {
+            renderCard(9);
+          } else {
+            alert('Выберите уровень сложности');
+          }
+        });
+      },
+      { once: true }
+    );
+  });
 }
-
-renderLevelSelection();
-
-// Переход на другие страницы
-
-const btn = document.querySelector('.choose__btn');
-const link = document.querySelectorAll('.choose__link');
-
-link.forEach((element) => {
-  element.addEventListener(
-    'click',
-    () => {
-      btn.addEventListener('click', (event) => {
-        const getValue = element.getAttribute('value');
-        event.preventDefault();
-
-        if (getValue === 'easy') {
-          renderCard(3);
-        } else if (getValue === 'average') {
-          renderCard(6);
-        } else if (getValue === 'hard') {
-          renderCard(9);
-        } else {
-          alert('Выберите уровень сложности');
-        }
-      });
-    },
-    { once: true }
-  );
-});

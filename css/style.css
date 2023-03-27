@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'StratosSkyeng';
-  src: local('StratosSkyeng'),
+  font-family: "StratosSkyeng";
+  src: local("StratosSkyeng"),
     /* Если не получилось, загрузит woff2 */
-      url('../fonts/stratosskyengweb-regular.woff2') format('woff2'),
+      url("../fonts/stratosskyengweb-regular.woff2") format("woff2"),
     /* Если браузер не поддерживает woff2, загрузит woff */
-      url('../fonts/stratosskyengweb-regular.woff2') format('woff');
+      url("../fonts/stratosskyengweb-regular.woff2") format("woff");
 }
 
 * {
@@ -14,7 +14,7 @@
 
 body {
   background-color: #004980;
-  font-family: 'StratosSkyeng';
+  font-family: "StratosSkyeng";
 }
 
 .app {
@@ -46,8 +46,12 @@ body {
   width: 208px;
 }
 
+.choose__title-resault {
+  width: 308px;
+}
+
 .choose__link {
-  font-family: 'StratosSkyeng';
+  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -103,7 +107,7 @@ body {
 .timers {
   display: flex;
   color: white;
-  font-family: 'StratosSkyeng';
+  font-family: "StratosSkyeng";
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
@@ -153,6 +157,24 @@ body {
   scale: 1.1;
 }
 
-.success {
-  pointer-events: none;
+/* Результат игры */
+
+.choose-img {
+  width: 96px;
+  height: 96px;
+  margin-top: 30px;
+  background-position: center center;
+}
+
+.choose-time {
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 28px;
+}
+
+.timer {
+  font-size: 64px;
+  line-height: 72px;
+  margin-top: 10px;
+  margin-bottom: -40px;
 }

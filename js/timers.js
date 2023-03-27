@@ -1,4 +1,6 @@
-function timers() {
+export function timers() {
+  const APP = document.querySelector('.app');
+
   // Создание общего контейнера для таймера
   const timeWrap = document.createElement('div');
   timeWrap.classList.add('container');
