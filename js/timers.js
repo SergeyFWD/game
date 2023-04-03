@@ -1,4 +1,6 @@
-function timers() {
+export function timers() {
+  const APP = document.querySelector('.app');
+
   // Создание общего контейнера для таймера
   const timeWrap = document.createElement('div');
   timeWrap.classList.add('container');
@@ -26,6 +28,10 @@ function timers() {
   const timerBtn = document.createElement('button');
   timerBtn.classList.add('timers__btn');
   timerBtn.textContent = 'Начать заново';
+
+  timerBtn.addEventListener('click', () => {
+    window.location.reload();
+  });
 
   // Добавление общего контейнера для таймера
   APP.appendChild(timeWrap);
