@@ -1,13 +1,16 @@
 const APP = document.querySelector('.app');
-export function resaultGame(game, resault) {
+export function resaultGame(game: string, resault: string) {
+  const wrap = document.createElement("div");
+  wrap.classList.add("wrap");
+
   // Создание общей обертки
   const chooseWrap = document.createElement("div");
-  chooseWrap.classList.add("choose-wrap");
+  chooseWrap.classList.add("choose-wrap", "resault");
 
   // Создание картинки 
   const chooseImg = document.createElement("div");
   chooseImg.classList.add("choose-img");
-  chooseImg.style.backgroundImage = `url("../img/${resault}.png")`
+  chooseImg.style.backgroundImage = `url("${resault}")`
 
   // Создание Title
   const h2 = document.createElement("h2");
@@ -19,10 +22,15 @@ export function resaultGame(game, resault) {
   chooseTimer.classList.add("choose-time");
   chooseTimer.textContent = "Затраченное время:";
 
+  // Получение значения Таймера
+
+  const valueSeconds = document.querySelector('.timers__seconds').innerHTML;
+  const valueMinutes = document.querySelector('.timers__minutes').innerHTML;
+
   // Создание таймера
   const timer = document.createElement("div");
   timer.classList.add("timer");
-  timer.textContent = "01.20";
+  timer.innerHTML = `${valueMinutes}.${valueSeconds}`;
 
   // Создание Кнопки
   const btnChoose = document.createElement("button");
@@ -33,7 +41,8 @@ export function resaultGame(game, resault) {
   const chooseLinkBg = document.createElement("div");
   chooseLinkBg.classList.add("choose__link-bg");
 
-  APP.appendChild(chooseWrap);
+  APP.before(wrap);
+  wrap.appendChild(chooseWrap);
   chooseWrap.appendChild(chooseImg);
   chooseWrap.appendChild(h2);
   chooseWrap.appendChild(chooseTimer);

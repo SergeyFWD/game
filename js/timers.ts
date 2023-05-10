@@ -50,4 +50,38 @@ export function timers() {
 
   // Добавление контейнера для Секунды
   timers.appendChild(timerSeconds);
-}
+
+  // Live Timer
+
+  let interval: any,
+  second: any = 0,
+  minutes: any = 0;
+
+  const startTimer = () => {
+    second++;
+    timerSeconds.innerHTML = '0' + second;
+
+    if (second > 59) {
+      minutes++;
+      timerMinutes.innerHTML = '0' +  minutes;
+
+      second = 0;
+      timerSeconds.innerHTML = '0' + second;
+    }
+
+    if (second > 9) {
+      timerSeconds.innerHTML = second;
+    }
+
+    if (minutes > 9) {
+      timerMinutes.innerHTML = minutes;
+    }
+
+    if (minutes === 99) {
+      clearInterval(interval);
+    }
+  };
+
+  interval = setInterval(startTimer, 1000);
+  
+};
