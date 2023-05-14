@@ -1,5 +1,5 @@
 import { renderCard } from './cards';
-export function renderLevelSelection(app: any) {
+export function renderLevelSelection(app: Element) {
     
   // Создание общей обертки
   const chooseWrap = document.createElement('div');

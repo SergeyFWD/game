@@ -53,9 +53,9 @@ export function timers() {
 
   // Live Timer
 
-  let interval: any,
-  second: any = 0,
-  minutes: any = 0;
+  let interval: ReturnType<typeof setInterval> | null,
+  second: number = 0,
+  minutes: number = 0;
 
   const startTimer = () => {
     second++;
@@ -70,11 +70,11 @@ export function timers() {
     }
 
     if (second > 9) {
-      timerSeconds.innerHTML = second;
+      timerSeconds.innerHTML = String(second);
     }
 
     if (minutes > 9) {
-      timerMinutes.innerHTML = minutes;
+      timerMinutes.innerHTML = String(minutes);
     }
 
     if (minutes === 99) {
