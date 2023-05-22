@@ -77,6 +77,7 @@ let arrCard = [
 let cards: Array<[]> = [];
 let firstCard: string = undefined;
 let secondCard: string = undefined;
+let cardsLenght: number = 0;
 
 import { timers } from './timers';
 import { resaultGame } from './resault';
@@ -135,12 +136,19 @@ export function renderCard(num: number) {
       if (secondCard !== undefined && firstCard !== undefined) {
         if (secondCard === firstCard && firstCard === secondCard) {
           btn.classList.add('success');
-          resaultGame('Выиграли', win);
+
+          cardsLenght += 2;
+
+          if (cards.length === cardsLenght) {
+            resaultGame('Выиграли', win);
+            clearInterval(window.interval);            
+          }
 
           firstCard = undefined;
           secondCard = undefined;
         } else if (secondCard !== firstCard) {
           resaultGame('Проиграли', lose);
+          clearInterval(window.interval);
         }
       }
     });
