@@ -53,9 +53,9 @@ export function timers() {
 
   // Live Timer
 
-  let interval: ReturnType<typeof setInterval> | null,
-  second: number = 0,
-  minutes: number = 0;
+  let interval: ReturnType<typeof setInterval> | null;
+  let second: number = 0;
+  let minutes: number = 0;
 
   const startTimer = () => {
     second++;
@@ -82,6 +82,10 @@ export function timers() {
     }
   };
 
-  interval = setInterval(startTimer, 1000);
+  window.interval = setInterval(startTimer, 1000);
   
 };
+
+declare global {
+  interface Window { interval: ReturnType<typeof setInterval> | null; }
+}
